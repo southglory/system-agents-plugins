@@ -73,14 +73,20 @@ def test_dotenv_project_root_is_honored(tmp_path, monkeypatch):
     even when the secrets file was loaded from the original root."""
     monkeypatch.delenv("SYSTEM_AGENTS_PROJECT_ROOT", raising=False)
 
-    # Original "project" just holds the secrets file
+    # Original "project" holds the secrets file; it has a .claude dir so the
+    # cwd-walk fallback in resolve_project_root() will find it during the
+    # second Config.load() call below (which has no explicit project_root).
     original = tmp_path / "original"
     (original / ".claude" / "secrets").mkdir(parents=True)
-    (original / ".claude").mkdir(exist_ok=True)
 
     # Target the user actually wants paths resolved against
     target = tmp_path / "actual-project"
     (target / ".claude").mkdir(parents=True)
+
+    # Pin cwd to `original` so cwd-walk lands there deterministically, both
+    # on CI (where $PWD has no .claude ancestor) and locally when pytest is
+    # run from a checkout that happens to sit under a project with .claude.
+    monkeypatch.chdir(original)
 
     env_file = original / ".claude" / "secrets" / "discord-huddle.env"
     env_file.write_text(
