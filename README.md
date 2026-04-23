@@ -38,7 +38,7 @@ Answer "discord-huddle" (or any other listed plugin) when the installer asks whi
 | Folder | Summary | Status |
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | Team chat + tracked meeting summaries via Discord | ✅ Released (`discord-huddle-v0.1.0`) |
-| `unity-gamedev/` | Unity CLI build → GitHub Release publishing | 🚧 Planned |
+| [`unity-gamedev/`](unity-gamedev/) | Unity CLI build → GitHub Release publishing | ✅ Released (`unity-gamedev-v0.1.0`) |
 
 Open a plugin folder to see its own README for detailed setup.
 

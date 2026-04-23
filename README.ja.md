@@ -38,7 +38,7 @@ bash install.sh
 | フォルダ | 概要 | ステータス |
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | Discord チャンネルを用いたチーム会話 + 追跡型会議メモ | ✅ リリース済 (`discord-huddle-v0.1.0`) |
-| `unity-gamedev/` | Unity CLI ビルド → GitHub Release 公開 | 🚧 計画中 |
+| [`unity-gamedev/`](unity-gamedev/) | Unity CLI ビルド → GitHub Release 公開 | ✅ リリース済 (`unity-gamedev-v0.1.0`) |
 
 各プラグインフォルダを開くと、それぞれの README に詳細なセットアップ手順があります。
 

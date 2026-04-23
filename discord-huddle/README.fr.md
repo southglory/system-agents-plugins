@@ -112,7 +112,7 @@ Le contrat exact de chaque skill est dans `skills/<nom>/SKILL.md`.
 | Cible | Effet | Configuration | Recipe |
 |---|---|---|---|
 | `/schedule` intégré (Claude Code) | Annonces récurrentes dans le canal (daily, rapports hebdos) | Utiliser `/schedule` pour cron `discord-huddle-post` | Docs-only combo (exemple cron dans [README.ko.md](README.ko.md#조합-가능한-플러그인)) |
-| (prévu) `unity-gamedev` | Build Unity → GitHub Release → annonce auto du lien dans le canal | Installer les deux plugins ; piper le JSON de `publish-build` vers `discord-huddle-post` | `recipes/unity-build-to-discord/` (sera ajouté avec unity-gamedev) |
+| [`unity-gamedev`](../unity-gamedev/) | Build Unity → GitHub Release → annonce auto du lien dans le canal | Installer les deux plugins ; piper le JSON de `publish-build` vers `discord-huddle-post` | `recipes/unity-build-to-discord/` (sera ajouté avec unity-gamedev) |
 
 ## Prérequis
 

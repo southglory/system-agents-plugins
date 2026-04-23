@@ -38,7 +38,7 @@ bash install.sh
 | 目录 | 简介 | 状态 |
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | 基于 Discord 的团队聊天 + 追踪型会议纪要 | ✅ 已发布 (`discord-huddle-v0.1.0`) |
-| `unity-gamedev/` | Unity CLI 构建 → GitHub Release 发布 | 🚧 计划中 |
+| [`unity-gamedev/`](unity-gamedev/) | Unity CLI 构建 → GitHub Release 发布 | ✅ 已发布 (`unity-gamedev-v0.1.0`) |
 
 打开每个插件文件夹查看各自的 README 获取详细安装说明。
 

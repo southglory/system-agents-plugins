@@ -38,7 +38,7 @@ bash install.sh
 | 폴더 | 설명 | 상태 |
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | Discord 채팅 + 트래킹되는 회의록 파이프 | ✅ 배포 (`discord-huddle-v0.1.0`) |
-| `unity-gamedev/` | Unity CLI 빌드 + GitHub Release 퍼블리시 | 🚧 준비 중 |
+| [`unity-gamedev/`](unity-gamedev/) | Unity CLI 빌드 + GitHub Release 퍼블리시 | ✅ 배포 (`unity-gamedev-v0.1.0`) |
 
 각 플러그인 폴더를 열면 자체 README에 설치 세부가 있다.
 

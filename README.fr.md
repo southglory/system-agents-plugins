@@ -38,7 +38,7 @@ Lorsque l'installateur demande quels plugins installer, choisissez `discord-hudd
 | Dossier | Résumé | Statut |
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | Chat d'équipe + notes de réunion suivies via Discord | ✅ Publié (`discord-huddle-v0.1.0`) |
-| `unity-gamedev/` | Build Unity CLI → publication GitHub Release | 🚧 Prévu |
+| [`unity-gamedev/`](unity-gamedev/) | Build Unity CLI → publication GitHub Release | ✅ Publié (`unity-gamedev-v0.1.0`) |
 
 Ouvrez chaque dossier de plugin pour voir son propre README avec les détails d'installation.
 

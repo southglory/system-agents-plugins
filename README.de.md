@@ -38,7 +38,7 @@ Wenn der Installer fragt, welche Plugins installiert werden sollen, wähle `disc
 | Ordner | Zusammenfassung | Status |
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | Team-Chat + nachverfolgte Meeting-Notizen über Discord | ✅ Veröffentlicht (`discord-huddle-v0.1.0`) |
-| `unity-gamedev/` | Unity-CLI-Build → GitHub-Release-Veröffentlichung | 🚧 Geplant |
+| [`unity-gamedev/`](unity-gamedev/) | Unity-CLI-Build → GitHub-Release-Veröffentlichung | ✅ Veröffentlicht (`unity-gamedev-v0.1.0`) |
 
 Für detaillierte Einrichtung siehe das jeweilige Plugin-README.
 

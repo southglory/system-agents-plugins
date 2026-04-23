@@ -38,7 +38,7 @@ Cuando el instalador pregunte qué plugins instalar, responde `discord-huddle` (
 | Carpeta | Resumen | Estado |
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | Chat de equipo + notas de reunión vía Discord | ✅ Publicado (`discord-huddle-v0.1.0`) |
-| `unity-gamedev/` | Build con Unity CLI → publicación en GitHub Release | 🚧 Planeado |
+| [`unity-gamedev/`](unity-gamedev/) | Build con Unity CLI → publicación en GitHub Release | ✅ Publicado (`unity-gamedev-v0.1.0`) |
 
 Abre cada carpeta de plugin para ver su README detallado.
 

@@ -112,7 +112,7 @@ python bot/discord_collab.py summarize-check
 | 対象 | 効果 | セットアップ | Recipe |
 |---|---|---|---|
 | 組み込み `/schedule`（Claude Code） | チャンネルで定期告知（デイリースタンドアップ、週次レポート） | `/schedule` で `discord-huddle-post` を cron | ドキュメントのみの組み合わせ（cron 例は [README.ko.md](README.ko.md#조합-가능한-플러그인)） |
-| （計画中）`unity-gamedev` | Unity ビルド → GitHub Release → チャンネルリンク自動告知 | 両方のプラグインをインストール。`publish-build` の JSON を `discord-huddle-post` に流す | `recipes/unity-build-to-discord/`（unity-gamedev と共に追加予定） |
+| [`unity-gamedev`](../unity-gamedev/) | Unity ビルド → GitHub Release → チャンネルリンク自動告知 | 両方のプラグインをインストール。`publish-build` の JSON を `discord-huddle-post` に流す | `recipes/unity-build-to-discord/`（unity-gamedev と共に追加予定） |
 
 ## 要件
 

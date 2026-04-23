@@ -112,7 +112,7 @@ python bot/discord_collab.py summarize-check
 | 目标 | 效果 | 设置 | Recipe |
 |---|---|---|---|
 | 内置的 `/schedule`（Claude Code） | 在频道发送定期公告（每日站会、周报） | 使用 `/schedule` 为 `discord-huddle-post` 设置 cron | 仅文档组合（示例见 [README.ko.md](README.ko.md#조합-가능한-플러그인)） |
-| （计划中）`unity-gamedev` | Unity 构建 → GitHub Release → 自动公告频道链接 | 同时安装两个插件；将 `publish-build` JSON 管道到 `discord-huddle-post` | `recipes/unity-build-to-discord/`（待与 unity-gamedev 一同新增） |
+| [`unity-gamedev`](../unity-gamedev/) | Unity 构建 → GitHub Release → 自动公告频道链接 | 同时安装两个插件；将 `publish-build` JSON 管道到 `discord-huddle-post` | `recipes/unity-build-to-discord/`（待与 unity-gamedev 一同新增） |
 
 ## 要求
 
