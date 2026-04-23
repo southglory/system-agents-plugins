@@ -1,0 +1,28 @@
+# Plugin index consumed by the template's install.sh.
+#
+# Each entry:
+#   name         Unique identifier, also the folder name in this repo.
+#   summary      One-line description shown in the installer's plugin picker.
+#   path         Subdirectory (relative to repo root) to copy into the user's project.
+#   min_python   Minimum Python version the plugin's code supports.
+#   needs_token  Human hint; the installer surfaces this so users know they must
+#                fill a secret after install. Skip if the plugin works without secrets.
+#   extras       Optional feature names the plugin advertises. Purely informative
+#                in the installer; each extra's setup is the plugin's own concern.
+#   status       "stable" | "preview" | "planned". Installer can skip planned ones.
+plugins:
+  - name: discord-huddle
+    summary: Team chat + tracked meeting summaries via Discord (pull/push/listen/summarize)
+    path: discord-huddle/
+    min_python: "3.10"
+    needs_token: Discord Bot Token (Developer Portal → Bot → Reset Token)
+    extras:
+      - vc-snapshot        # headless Chromium page snapshots (optional)
+    status: stable
+
+  # Planned — surfaced as "coming soon" in the installer, not selectable.
+  - name: unity-gamedev
+    summary: Unity CLI build → GitHub Release publishing pipeline
+    path: unity-gamedev/
+    min_python: "3.10"
+    status: planned

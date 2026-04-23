@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1000000000000000003",
+    "content": "C",
+    "timestamp": "2026-04-21T14:32:00.000000+00:00",
+    "author": {"id": "u2", "username": "강현명"},
+    "attachments": [],
+    "reactions": []
+  },
+  {
+    "id": "1000000000000000002",
+    "content": "B",
+    "timestamp": "2026-04-21T14:31:00.000000+00:00",
+    "author": {"id": "u1", "username": "영광형"},
+    "attachments": [
+      {"url": "https://cdn.discordapp.com/img.png", "filename": "img.png", "id": "att1"}
+    ],
+    "reactions": []
+  },
+  {
+    "id": "1000000000000000001",
+    "content": "A",
+    "timestamp": "2026-04-21T14:30:00.000000+00:00",
+    "author": {"id": "u1", "username": "영광형"},
+    "attachments": [],
+    "reactions": []
+  }
+]

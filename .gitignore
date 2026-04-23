@@ -1,0 +1,41 @@
+# Python caches / bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Test / type-checker caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtualenvs (if someone creates one inside the repo)
+.venv/
+venv/
+env/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Secrets — users MUST NOT commit real tokens.
+# Plugin's runtime dirs are self-isolating (they drop their own .gitignore: *)
+# but secrets live at the host project's .claude/secrets, which the host
+# project should gitignore — we re-assert it here for safety.
+.env
+.env.*
+.claude/secrets/
