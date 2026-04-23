@@ -1,0 +1,8 @@
+# unity-gamedev has no third-party Python dependencies at runtime —
+# publish_build.py only uses the standard library (argparse, json, shutil,
+# subprocess, pathlib, os, sys) and shells out to unity-cli and gh.
+#
+# External tools you DO need on PATH:
+#   - unity-cli   (https://github.com/southglory/claude-skill-unity-urp or equivalent)
+#   - gh          (https://cli.github.com/)
+#   - Unity Editor, running, with unity-cli connected.

@@ -20,9 +20,12 @@ plugins:
       - vc-snapshot        # headless Chromium page snapshots (optional)
     status: stable
 
-  # Planned — surfaced as "coming soon" in the installer, not selectable.
   - name: unity-gamedev
-    summary: Unity CLI build → GitHub Release publishing pipeline
+    summary: One-command Unity release pipeline — build via unity-cli, zip, publish as a GitHub Release
     path: unity-gamedev/
     min_python: "3.10"
-    status: planned
+    needs_token: None (reuses your existing `gh auth` login)
+    extras:
+      - multi-scene-build     # --scene can be repeated
+      - skip-build            # reuse pre-built Builds/<name>.<ext>
+    status: stable

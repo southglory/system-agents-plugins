@@ -6,15 +6,13 @@
 
 ## 현재 레시피
 
-아직 없음. 플러그인이 하나(discord-huddle)뿐이라 조합이 성립하지 않는다.
+| 이름 | 전제 플러그인 | 효과 |
+|---|---|---|
+| [`unity-build-to-discord/`](unity-build-to-discord/) | `unity-gamedev` + `discord-huddle` | Unity 빌드 → GitHub Release → 채널에 다운로드 링크 자동 공지 |
 
 ## 예정 레시피
 
-| 이름 | 전제 플러그인 | 효과 |
-|---|---|---|
-| `unity-build-to-discord/` | `discord-huddle` + `unity-gamedev` | Unity 빌드 → GitHub Release → 채널에 다운로드 링크 자동 공지 |
-
-unity-gamedev 플러그인이 공개되면 이 레시피도 함께 추가.
+새 플러그인이 추가되면 관련 recipe를 여기에 더한다.
 
 ## 규약
 

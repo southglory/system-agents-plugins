@@ -35,3 +35,34 @@ jobs:
 
       - name: Run pytest
         run: python -m pytest tests/ -v --tb=short
+
+  unity-gamedev:
+    # unity-gamedev uses only the Python stdlib at runtime (shells out to
+    # unity-cli and gh). Its test suite monkeypatches subprocess, so we
+    # don't need Unity or gh on the CI runner — just Python + pytest.
+    name: unity-gamedev (${{ matrix.os }} / py${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    defaults:
+      run:
+        working-directory: unity-gamedev/bot
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dev dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ../requirements-dev.txt
+
+      - name: Run pytest
+        run: python -m pytest tests/ -v --tb=short
