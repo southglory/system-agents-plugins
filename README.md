@@ -1,72 +1,80 @@
 # system-agents-plugins
 
-[system-agents-template](https://github.com/southglory/system-agents-template)을 위한 공식 플러그인 모음.
+[English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
-각 플러그인은 이 레포의 하위 폴더로 독립적으로 배포된다. 사용자는 필요한 플러그인만 골라 설치한다.
+Official plugins for [system-agents-template](https://github.com/southglory/system-agents-template).
 
-## 플러그인 목록
+Each plugin lives in its own subdirectory and is distributed independently. Users pick only the plugins they need.
 
-| 폴더 | 설명 | 상태 |
-|---|---|---|
-| [`discord-huddle/`](discord-huddle/) | Discord 채널을 팀 채팅 + 회의록 파이프로 | ✅ 배포 (v0.1.0) |
-| `unity-gamedev/` | Unity CLI 빌드 + GitHub Release 퍼블리시 | 🚧 준비 중 |
+## 🚀 One-line install (via the template's installer)
 
-## 설치 모델
-
-플러그인은 `cp -r` 방식의 파일 복사로 설치된다. npm·pypi 같은 패키지 매니저는 쓰지 않는다 — 이 플러그인 생태계는 **사용자의 프로젝트 파일 트리와 직접 결합**하기 때문.
+You don't clone this repo directly — the template's `install.sh` reads the plugin index here and copies the selected plugins into your project:
 
 ```bash
-# 1. 이 레포 clone
-git clone https://github.com/southglory/system-agents-plugins.git
-cd system-agents-plugins
+curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
+bash install.sh
+```
 
-# 2. 원하는 플러그인을 대상 프로젝트로 복사
+Answer "discord-huddle" (or any other listed plugin) when the installer asks which plugins to pull.
+
+## Available plugins
+
+| Folder | Summary | Status |
+|---|---|---|
+| [`discord-huddle/`](discord-huddle/) | Team chat + tracked meeting summaries via Discord | ✅ Released (`discord-huddle-v0.1.0`) |
+| `unity-gamedev/` | Unity CLI build → GitHub Release publishing | 🚧 Planned |
+
+Open a plugin folder to see its own README for detailed setup.
+
+## Install model
+
+Plugins are installed by file copy (`cp -r`), not by a package manager (pip/npm). The plugin files merge directly into your project tree, so managed installation belongs to the template's `install.sh`:
+
+```bash
+# 1. Clone this repo (installer does this automatically)
+git clone https://github.com/southglory/system-agents-plugins.git
+
+# 2. Copy the desired plugin into your project (installer does this)
 cp -r discord-huddle/bot/* /path/to/your-project/bot/
 cp -r discord-huddle/skills/* /path/to/your-project/skills/
 
-# 3. 스킬을 Claude Code에 등록
+# 3. Register skills with Claude Code (installer does this)
 cp -r discord-huddle/skills/* ~/.claude/skills/
 
-# 4. Python 의존
+# 4. Install Python deps
 cd /path/to/your-project
 pip install -r discord-huddle/requirements.txt
 ```
 
-각 플러그인의 상세 설치는 해당 폴더의 `README.md` 참고.
+The manual `cp -r` flow exists as a fallback for advanced users; the installer is recommended.
 
-## 버전 태그 규약
+## Versioning
 
-플러그인별 독립 릴리즈. 태그 형식: `<plugin-name>-vX.Y.Z`
+Each plugin is released independently. Tag format: `<plugin-name>-vX.Y.Z`.
 
-- `discord-huddle-v0.1.0` — discord-huddle 첫 배포
-- `unity-gamedev-v0.1.0` — (예정)
+- `discord-huddle-v0.1.0` — first public release
+- `unity-gamedev-v0.1.0` — planned
 
-레포 전체 단일 버전은 쓰지 않는다.
+There is no repo-wide single version. Template tags (`v2.x.x`) and plugin tags never collide.
 
-## 조합 전략
+## Combining plugins
 
-플러그인은 서로 **독립적으로 동작**하지만 함께 쓰면 더 강력한 경우가 있다. 세 레벨이 있다:
+Plugins are designed to work on their own, but some pair well. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the combo-matrix convention each plugin README is expected to document. Reusable cross-plugin combos live in [`recipes/`](recipes/).
 
-- **레벨 1 — 조합 표**: 각 플러그인 `README.md`의 "조합 가능한 플러그인" 섹션에 호환성 매트릭스 명시. 필수.
-- **레벨 2 — Recipe**: 자주 쓰이는 조합은 `recipes/<combo-name>/`에 레시피 폴더로 제공. 선택.
-- **레벨 3 — 자동 설치**: 도입 계획 없음. 사용자가 어떤 조합을 쓸지는 선택의 문제.
+## Compatibility
 
-상세 규약은 [`CONTRIBUTING.md`](CONTRIBUTING.md) 참조.
-
-## 호환성
-
-- Claude Code 환경 (슬래시 스킬 시스템)
-- system-agents-template v2.x 이상 (chatrooms, board.yaml, turn-bot)
+- Claude Code (slash skill system)
+- system-agents-template v2.x or later (chatrooms, board.yaml, turn-bot)
 - Python ≥ 3.10
-- Windows/macOS/Linux
+- Windows / macOS / Linux
 
-각 플러그인이 추가 요구사항을 명시할 수 있다 (예: discord-huddle은 Discord Bot Token 필요).
+Plugins may add further requirements (for example discord-huddle needs a Discord Bot Token).
 
-## 라이선스
+## License
 
-[MIT](LICENSE) — system-agents-template과 동일.
+[MIT](LICENSE) — same as system-agents-template.
 
-## 기여
+## Contributing
 
-- 버그·피드백은 GitHub Issues로
-- 새 플러그인 PR은 [`CONTRIBUTING.md`](CONTRIBUTING.md)의 구조 규약을 따라야 한다
+- Bug reports and feedback: GitHub Issues
+- New plugins: follow the structure conventions in [`CONTRIBUTING.md`](CONTRIBUTING.md)

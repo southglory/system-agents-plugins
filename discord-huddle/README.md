@@ -1,117 +1,116 @@
 # discord-huddle
 
-Discord 채널을 프로젝트의 **팀 채팅 · 회의록 · 공지 파이프**로 쓰게 해주는 [system-agents-template](https://github.com/southglory/system-agents-template) 플러그인.
+[English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
-- **Pull**: 채널 메시지를 로컬 JSONL로 덤프 (`/discord-huddle-sync`)
-- **Push**: 에이전트·사용자가 메시지를 채널에 게시 (`/discord-huddle-post`)
-- **Listen**: Gateway WebSocket으로 실시간 알림 (`/discord-huddle-listen`)
-- **Summarize**: 에이전트가 직접 raw를 읽고 팀 회의록 md로 정리 (`/discord-huddle-summarize`, LLM API 호출 없음)
+A [system-agents-template](https://github.com/southglory/system-agents-template) plugin that turns a Discord channel into your project's team chat, meeting-notes pipe, and announcement surface.
 
-## 설치
+- **Pull**: archive channel messages as local JSONL (`/discord-huddle-sync`)
+- **Push**: let agents or users post messages to the channel (`/discord-huddle-post`)
+- **Listen**: real-time notifications over the Discord Gateway WebSocket (`/discord-huddle-listen`)
+- **Summarize**: an agent reads the raw log and produces a tracked markdown meeting note — no LLM API cost beyond your Claude Code session (`/discord-huddle-summarize`)
 
-프로젝트 루트에서:
+## 🚀 One-line install (recommended)
+
+Don't clone this repo directly. Use the template's installer:
 
 ```bash
-# 1. 플러그인 파일 복사
-cp -r discord-huddle/bot/* ./bot/
-cp -r discord-huddle/skills/* ./skills/
-# (system-agents-template 프로젝트에 설치한다면 ./bot, ./skills가 이미 있음)
-
-# 2. Python 의존 설치
-pip install -r discord-huddle/requirements.txt
-
-# 3. 스킬을 Claude Code에 설치 (전역)
-cp -r discord-huddle/skills/* ~/.claude/skills/
+curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
+bash install.sh
 ```
 
-설정 파일 작성은 `docs/SETUP.md` 참조. 스모크 테스트는 `docs/SMOKE_TEST.md`.
+When asked, pick `discord-huddle` from the plugin list. The installer copies files into your project, registers slash skills globally, and seeds `.claude/secrets/discord-huddle.env.example`. After install, fill the secrets file (Bot Token + Channel ID) and you're done.
 
-## 주요 기능
+Detailed setup: [`docs/SETUP.md`](docs/SETUP.md). Manual smoke test: [`docs/SMOKE_TEST.md`](docs/SMOKE_TEST.md).
 
-### REST 동기화 + 실시간 리스너
+## Key features
 
-- `sync`는 REST polling으로 last_read 이후 모든 메시지 수집
-- `listen`(Gateway)은 WebSocket으로 실시간 신호 수신 → 파일 변경으로 Claude Code Monitor에 연결
-- 둘은 병행 가능 — 리스너는 속도, sync는 완전성 (첨부 다운로드 등)
+### REST sync + real-time listener
 
-### 양방향
+- `sync` pulls everything after `last_read` via REST polling
+- `listen` (Gateway) gets events pushed over WebSocket and writes tiny signal files that Claude Code's Monitor tool picks up
+- Use them together: listener gives speed, sync guarantees completeness (attachments, reactions on first receive)
 
-- 팀원 → 에이전트: Discord 채팅으로 기획 / 피드백 / 요청
-- 에이전트 → 팀원: 분석 결과, 도식 이미지, Visual Companion 스냅샷, 빌드 릴리즈 URL 등을 채널에 게시
+### Two-way channel
 
-### 요약을 팀 자산으로
+- Team → agent: chat drops requirements, feedback, questions in Discord
+- Agent → team: agents post analysis, diagrams, webpage screenshots, build-release links right back into the channel
 
-- 요약 md는 `docs/discord-huddle-summaries/`에 쌓이고 **git으로 트래킹됨**
-- 새 팀원이 `git clone` 하면 과거 회의록을 바로 읽음
-- 요약 진행 포인터(`index.json`)도 git에 포함 → 머지 충돌 나도 "더 뒤 msg_id 선택"으로 기계적 해결
+### Summaries as a team asset
 
-### 경로 캡슐화
+- Summary markdowns land in `docs/discord-huddle-summaries/` and are **git-tracked**
+- A new teammate who `git clone`s the project immediately reads past meeting notes
+- The summary progress pointer (`index.json`) is also tracked, so merge conflicts resolve deterministically (forward-only: "take the newer msg_id")
 
-- 런타임 데이터(`raw`, `inbox`, `local-state`)는 `.system-agents/discord-huddle/`에 격리 + 자동 `.gitignore: *` 드롭
-- 프로젝트 `.gitignore`를 **건드리지 않음**
-- 환경변수로 경로 전부 재정의 가능
+### Deterministic summarize gate
 
-## 스킬 목록
+Before an agent spends tokens summarizing, it calls:
 
-| 슬래시 명령 | 설명 |
+```bash
+python bot/discord_collab.py summarize-check
+```
+
+A code-only scan returns `{ready, reason, stats}`. If `ready:false` (too few messages, short monologue, etc.), the agent stops immediately without loading raw into its context. The full rules live in [`skills/discord-huddle-summarize/SKILL.md`](skills/discord-huddle-summarize/SKILL.md).
+
+### Non-invasive installation
+
+- Runtime data (`raw/`, `inbox/`, `local-state.json`, `vc-snapshots/`) lives in `.system-agents/discord-huddle/` and the plugin auto-drops a `.gitignore: *` inside — **your project's root `.gitignore` is never touched**
+- Path overrides via the same `.env` (no separate `export` needed):
+  `SYSTEM_AGENTS_PROJECT_ROOT`, `DISCORD_HUDDLE_DATA_DIR`, `DISCORD_HUDDLE_SUMMARY_DIR`
+
+### Friendly error messages
+
+No raw Python tracebacks. 401/403/404/429 each come with a one-line hint pointing at the exact remediation (Reset Token, re-invite bot, check channel id, rate limit).
+
+## Slash skills
+
+| Command | What it does |
 |---|---|
-| `/discord-huddle-sync` | 채널 새 메시지 → raw JSONL |
-| `/discord-huddle-listen` | Gateway WebSocket 실시간 리스너 |
-| `/discord-huddle-post` | 메시지/파일/VC 스냅샷을 채널에 게시 |
-| `/discord-huddle-summarize` | 에이전트가 raw 읽고 요약 md 작성 |
+| `/discord-huddle-sync` | Fetch new channel messages into raw JSONL |
+| `/discord-huddle-listen` | Gateway WebSocket real-time listener |
+| `/discord-huddle-post` | Post a message (with optional attachments or web-page snapshot) |
+| `/discord-huddle-summarize` | Agent reads raw and writes a meeting note |
 
-각 스킬 상세는 `skills/*/SKILL.md` 참조.
+Each skill's exact contract is in `skills/<name>/SKILL.md`.
 
-## 웹 페이지 스냅샷 (선택 기능)
+## Web page snapshot (optional feature)
 
-`/discord-huddle-post --vc-snapshot`으로 임의의 웹 페이지를 헤드리스 Chromium으로 렌더링해 PNG로 첨부한다.
+`/discord-huddle-post --vc-snapshot` renders an arbitrary URL as a PNG using headless Chromium and attaches it:
 
-- **URL 직접 지정**: `--vc-url https://my-dashboard.local`
-- **자동 탐지 (선택)**: `--vc-url` 대신 `--vc-sessions-dir DIR` 또는 `VC_SESSIONS_DIR` env를 설정하면 `DIR/<session>/state/server-info` 구조에서 가장 최근 live URL을 자동으로 집는다. 어떤 도구가 그 구조로 서버 정보를 남기든 상관 없음.
-- **의존**: `pip install -r requirements-optional.txt` + `playwright install chromium` (최초 1회, 약 200MB)
+- Explicit URL: `--vc-url https://my-dashboard.local`
+- Auto-detection (opt-in): set `--vc-sessions-dir DIR` or `VC_SESSIONS_DIR` to a directory laid out as `<session>/state/server-info` (JSON containing a `url` field). The plugin doesn't care which tool produces those files.
+- Requires: `pip install -r requirements-optional.txt` + `playwright install chromium` (~200 MB, one time).
 
-어떤 외부 도구와도 결합하지 않는 범용 기능 — 대시보드, 내부 콘솔, 기획 도구 등 URL이 있는 건 모두 지원.
+## Data locations (default)
 
-## 데이터 위치
-
-| 경로 | 내용 | git 트래킹 |
+| Path | Contents | Git-tracked? |
 |---|---|---|
-| `.system-agents/discord-huddle/raw/*.jsonl` | Raw 메시지 덤프 | 자동 gitignore |
-| `.system-agents/discord-huddle/inbox/` | Gateway 실시간 신호 | 자동 gitignore |
-| `.system-agents/discord-huddle/local-state.json` | 개인 sync 포인터 | 자동 gitignore |
-| `.system-agents/discord-huddle/vc-snapshots/` | VC 스냅샷 PNG | 자동 gitignore |
-| `docs/discord-huddle-summaries/*.md` | 팀 회의록 | **트래킹** |
-| `docs/discord-huddle-summaries/index.json` | 요약 진행 포인터 | **트래킹** |
-| `docs/discord-huddle-summaries/attachments/` | 요약용 대표 이미지 | **트래킹** |
+| `.system-agents/discord-huddle/raw/*.jsonl` | Raw message dumps | No (auto-gitignore) |
+| `.system-agents/discord-huddle/inbox/` | Gateway real-time signals | No |
+| `.system-agents/discord-huddle/local-state.json` | Per-user sync pointer | No |
+| `.system-agents/discord-huddle/vc-snapshots/` | Playwright PNGs | No |
+| `docs/discord-huddle-summaries/*.md` | Team meeting notes | **Yes** |
+| `docs/discord-huddle-summaries/index.json` | Forward-only summary pointer | **Yes** |
+| `docs/discord-huddle-summaries/attachments/` | Images referenced by summaries | **Yes** |
 
-## 조합 가능한 플러그인
+## Combining with other plugins
 
-| 대상 | 조합 효과 | 추가 설정 | Recipe |
+| Target | Effect | Setup | Recipe |
 |---|---|---|---|
-| Claude Code 내장 `/schedule` | 정기 알림을 채널에 자동 게시 (스탠드업, 주간 리포트, 릴리즈 카운트다운 등) | `/schedule`로 `discord-huddle-post` 호출을 cron 등록 | — (얇은 조합이라 recipe 없음, 아래 예시 참고) |
-| (예정) unity-gamedev | Unity 빌드 → GitHub 릴리즈 → 채널에 링크 자동 공지 | 두 플러그인 모두 설치, `publish-build` 출력 URL을 `discord-huddle-post`에 파이프 | `recipes/unity-build-to-discord/` (unity-gamedev 공개 후 추가) |
+| Built-in `/schedule` (Claude Code) | Recurring announcements in the channel (daily standups, weekly reports) | Use `/schedule` to cron `discord-huddle-post` | Docs-only combo (see [README.ko.md](README.ko.md#조합-가능한-플러그인) for a cron example) |
+| (planned) `unity-gamedev` | Unity build → GitHub Release → auto-announced channel link | Install both plugins; pipe `publish-build` JSON into `discord-huddle-post` | `recipes/unity-build-to-discord/` (to be added with unity-gamedev) |
 
-### 예: Claude Code `/schedule`로 데일리 스탠드업 알림
-
-```
-/schedule name:daily-standup cron:"0 9 * * 1-5" \
-  command:"python bot/discord_collab.py post --message '☀️ 데일리 스탠드업 시간입니다'"
-```
-
-주의: 실행 호스트가 해당 시각에 **켜져 있어야** 동작한다. 가정용 PC로 24/7 상시 알림이 필요하다면 Sesh 같은 서드파티 Discord 스케줄러 봇이나 서버리스 cron을 고려.
-
-## 요구사항
+## Requirements
 
 - Python ≥ 3.10
-- Discord Bot Token (Developer Portal에서 발급)
-- **Message Content Intent** 활성화 (Gateway listener 사용 시 필수)
+- Discord Bot Token (create in [Developer Portal](https://discord.com/developers/applications))
+- **Message Content Intent** enabled (required for Gateway listener)
 
-## 라이선스
+## License
 
-MIT — `system-agents-plugins` 레포 루트 `LICENSE` 참조.
+MIT — see the repo-root [`LICENSE`](../LICENSE).
 
-## 관련 문서
+## Related docs
 
-- [SETUP.md](docs/SETUP.md) — 설치 및 설정
-- [SMOKE_TEST.md](docs/SMOKE_TEST.md) — 수동 스모크 테스트 체크리스트
-- 상위 레포 [README.md](../README.md) — 플러그인 생태계 개요
+- [SETUP.md](docs/SETUP.md) — install and configuration
+- [SMOKE_TEST.md](docs/SMOKE_TEST.md) — manual smoke-test checklist
+- Repo-root [README](../README.md) — the plugin ecosystem overview
