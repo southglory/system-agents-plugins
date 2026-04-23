@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Template core issues (installer, agents, chatrooms, turn-bot)
+    url: https://github.com/southglory/system-agents-template/issues
+    about: Those belong on the template repo, not here.
+  - name: Plugin setup guides
+    url: https://github.com/southglory/system-agents-plugins/tree/main/discord-huddle/docs
+    about: Read docs/SETUP.md and docs/SMOKE_TEST.md first for common install issues.

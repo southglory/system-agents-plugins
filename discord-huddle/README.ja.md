@@ -1,5 +1,10 @@
 # discord-huddle
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![discord-huddle release](https://img.shields.io/github/v/tag/southglory/system-agents-plugins?filter=discord-huddle-*&label=discord-huddle)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 [system-agents-template](https://github.com/southglory/system-agents-template) プラグイン。Discord チャンネルをプロジェクトのチームチャット、会議メモのパイプ、通知チャネルに変えます。
@@ -13,10 +18,20 @@
 
 このリポジトリを直接クローンしないでください。テンプレートのインストーラーを使います：
 
+ローリング（常に最新 `main`）:
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+安定 Release を固定（再現性のため推奨）:
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 インストール対象プラグインを訊かれたら `discord-huddle` を選択。インストーラーがファイルをプロジェクトにコピーし、スラッシュスキルをグローバル登録し、`.claude/secrets/discord-huddle.env.example` を配置します。インストール後はその `.env` ファイルに Bot Token と Channel ID を入れれば完了です。
 
@@ -114,3 +129,7 @@ MIT — リポジトリルートの [`LICENSE`](../LICENSE) を参照。
 - [SETUP.md](docs/SETUP.md) — インストールと設定
 - [SMOKE_TEST.md](docs/SMOKE_TEST.md) — 手動スモークテストチェックリスト
 - リポジトリルート [README](../README.md) — プラグインエコシステム概観
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

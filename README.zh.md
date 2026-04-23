@@ -1,5 +1,11 @@
 # system-agents-plugins
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/southglory/system-agents-plugins?include_prereleases&sort=semver)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 [system-agents-template](https://github.com/southglory/system-agents-template) 的官方插件集合。
@@ -10,10 +16,20 @@
 
 不直接克隆本仓库 —— 模板的 `install.sh` 会读取这里的插件索引，并将所选插件复制到你的项目：
 
+滚动（始终跟随 `main`）:
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+固定到稳定 Release（推荐以便重现）:
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 当安装器询问要安装哪些插件时，选择 `discord-huddle`（或其他列出的插件）。
 
@@ -78,3 +94,7 @@ pip install -r discord-huddle/requirements.txt
 
 - 缺陷报告与反馈：GitHub Issues
 - 新插件：参照 [`CONTRIBUTING.md`](CONTRIBUTING.md) 中的结构约定
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

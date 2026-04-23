@@ -1,5 +1,10 @@
 # discord-huddle
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![discord-huddle release](https://img.shields.io/github/v/tag/southglory/system-agents-plugins?filter=discord-huddle-*&label=discord-huddle)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 Un plugin [system-agents-template](https://github.com/southglory/system-agents-template) qui transforme un canal Discord en chat d'équipe, pipeline de notes de réunion et canal d'annonces pour votre projet.
@@ -13,10 +18,20 @@ Un plugin [system-agents-template](https://github.com/southglory/system-agents-t
 
 Ne clonez pas ce dépôt directement. Utilisez l'installateur du template :
 
+Rolling (toujours le `main` le plus récent):
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+Épinglé sur une Release stable (recommandé pour la reproductibilité):
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 Quand on vous le demande, choisissez `discord-huddle`. L'installateur copie les fichiers dans votre projet, enregistre les skills slash globalement, et dépose `.claude/secrets/discord-huddle.env.example`. Après l'installation, remplissez ce fichier de secrets (Bot Token + Channel ID) et c'est bon.
 
@@ -114,3 +129,7 @@ MIT — voir le [`LICENSE`](../LICENSE) à la racine du dépôt.
 - [SETUP.md](docs/SETUP.md) — installation et configuration
 - [SMOKE_TEST.md](docs/SMOKE_TEST.md) — checklist de smoke test manuel
 - [README](../README.md) à la racine du dépôt — vue d'ensemble de l'écosystème de plugins
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

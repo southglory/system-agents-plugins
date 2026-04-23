@@ -1,0 +1,71 @@
+name: Bug report
+description: Something in an installed plugin (discord-huddle, etc.) is misbehaving.
+title: "[bug][plugin:<name>] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: plugin
+    attributes:
+      label: Which plugin?
+      options:
+        - discord-huddle
+        - unity-gamedev (planned)
+        - repo infra (plugins.yaml, CI, docs)
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      placeholder: |
+        e.g. "`/discord-huddle-sync` returned new_messages=0 but the channel clearly has new posts."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Commands you ran and any manual Discord actions that preceded them.
+      render: bash
+    validations:
+      required: true
+
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version / commit
+      description: Output of `grep sha .agent-system-manifest.yaml` or the tag you installed.
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "e.g. Windows 11, macOS 14, Ubuntu 22.04"
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "e.g. 3.12.3"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output / logs
+      description: Paste terminal output. Strip any tokens before sharing.
+      render: shell

@@ -1,5 +1,10 @@
 # discord-huddle
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![discord-huddle release](https://img.shields.io/github/v/tag/southglory/system-agents-plugins?filter=discord-huddle-*&label=discord-huddle)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 A [system-agents-template](https://github.com/southglory/system-agents-template) plugin that turns a Discord channel into your project's team chat, meeting-notes pipe, and announcement surface.
@@ -13,10 +18,20 @@ A [system-agents-template](https://github.com/southglory/system-agents-template)
 
 Don't clone this repo directly. Use the template's installer:
 
+Rolling (always latest `main`):
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+Pinned to a stable template Release:
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 When asked, pick `discord-huddle` from the plugin list. The installer copies files into your project, registers slash skills globally, and seeds `.claude/secrets/discord-huddle.env.example`. After install, fill the secrets file (Bot Token + Channel ID) and you're done.
 
@@ -114,3 +129,7 @@ MIT — see the repo-root [`LICENSE`](../LICENSE).
 - [SETUP.md](docs/SETUP.md) — install and configuration
 - [SMOKE_TEST.md](docs/SMOKE_TEST.md) — manual smoke-test checklist
 - Repo-root [README](../README.md) — the plugin ecosystem overview
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

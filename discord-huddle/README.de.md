@@ -1,5 +1,10 @@
 # discord-huddle
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![discord-huddle release](https://img.shields.io/github/v/tag/southglory/system-agents-plugins?filter=discord-huddle-*&label=discord-huddle)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 Ein Plugin für [system-agents-template](https://github.com/southglory/system-agents-template), das einen Discord-Kanal zum Team-Chat, zur Meeting-Notizen-Pipeline und zum Ankündigungskanal deines Projekts macht.
@@ -13,10 +18,20 @@ Ein Plugin für [system-agents-template](https://github.com/southglory/system-ag
 
 Nicht dieses Repo direkt klonen. Verwende den Installer des Templates:
 
+Rolling (immer aktuelles `main`):
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+Fixiert auf ein stabiles Release (empfohlen für Reproduzierbarkeit):
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 Wähle `discord-huddle`, wenn gefragt wird. Der Installer kopiert Dateien in dein Projekt, registriert Slash-Skills global und legt `.claude/secrets/discord-huddle.env.example` an. Nach der Installation füllst du die Secrets-Datei (Bot Token + Channel ID) aus — fertig.
 
@@ -114,3 +129,7 @@ MIT — siehe [`LICENSE`](../LICENSE) im Repo-Root.
 - [SETUP.md](docs/SETUP.md) — Installation und Konfiguration
 - [SMOKE_TEST.md](docs/SMOKE_TEST.md) — manuelle Smoke-Test-Checkliste
 - Repo-Root [README](../README.md) — Plugin-Ökosystem-Übersicht
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

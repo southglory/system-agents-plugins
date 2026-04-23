@@ -1,5 +1,11 @@
 # system-agents-plugins
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/southglory/system-agents-plugins?include_prereleases&sort=semver)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 [system-agents-template](https://github.com/southglory/system-agents-template)을 위한 공식 플러그인 모음.
@@ -10,10 +16,20 @@
 
 이 레포를 직접 clone하지 말고, 템플릿의 `install.sh`를 써라. 이 스크립트가 여기 있는 `plugins.yaml` 인덱스를 읽어서 선택한 플러그인을 사용자 프로젝트에 복사한다.
 
+롤링 (항상 `main` 최신):
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+고정 릴리즈 (재현성 권장):
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 설치기가 "어떤 플러그인 설치할래?" 라고 물으면 `discord-huddle` (또는 다른 목록 플러그인) 선택.
 
@@ -78,3 +94,7 @@ pip install -r discord-huddle/requirements.txt
 
 - 버그·피드백: GitHub Issues
 - 새 플러그인 PR: [`CONTRIBUTING.md`](CONTRIBUTING.md) 규약 준수
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

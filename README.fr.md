@@ -1,5 +1,11 @@
 # system-agents-plugins
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/southglory/system-agents-plugins?include_prereleases&sort=semver)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 Plugins officiels pour [system-agents-template](https://github.com/southglory/system-agents-template).
@@ -10,10 +16,20 @@ Chaque plugin vit dans son propre sous-dossier et est distribué indépendamment
 
 Vous ne clonez pas ce dépôt directement — le `install.sh` du template lit l'index des plugins ici et copie les plugins sélectionnés dans votre projet :
 
+Rolling (toujours le `main` le plus récent):
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+Épinglé sur une Release stable (recommandé pour la reproductibilité):
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 Lorsque l'installateur demande quels plugins installer, choisissez `discord-huddle` (ou tout autre plugin listé).
 
@@ -78,3 +94,7 @@ Certains plugins ajoutent des exigences supplémentaires (par exemple, discord-h
 
 - Rapports de bugs et retours : GitHub Issues
 - Nouveaux plugins : suivez les conventions de structure dans [`CONTRIBUTING.md`](CONTRIBUTING.md)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

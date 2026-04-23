@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest a new capability for an existing plugin, or propose a new plugin.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Kind of request
+      options:
+        - New capability in an existing plugin (discord-huddle, ...)
+        - Entirely new plugin
+        - Shared infra (plugins.yaml schema, recipes/, CONTRIBUTING)
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Start from the pain, not the solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Concrete API / UX sketch is much more useful than a description.
+
+  - type: textarea
+    id: combination
+    attributes:
+      label: Plugin combinations
+      description: Does this interact with another plugin (existing or planned)? If yes, describe the combo matrix entry you'd add.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

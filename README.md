@@ -1,5 +1,11 @@
 # system-agents-plugins
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/southglory/system-agents-plugins?include_prereleases&sort=semver)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 Official plugins for [system-agents-template](https://github.com/southglory/system-agents-template).
@@ -10,10 +16,20 @@ Each plugin lives in its own subdirectory and is distributed independently. User
 
 You don't clone this repo directly — the template's `install.sh` reads the plugin index here and copies the selected plugins into your project:
 
+Rolling (always latest `main`):
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+Pinned to a stable template Release:
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 Answer "discord-huddle" (or any other listed plugin) when the installer asks which plugins to pull.
 
@@ -78,3 +94,7 @@ Plugins may add further requirements (for example discord-huddle needs a Discord
 
 - Bug reports and feedback: GitHub Issues
 - New plugins: follow the structure conventions in [`CONTRIBUTING.md`](CONTRIBUTING.md)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)

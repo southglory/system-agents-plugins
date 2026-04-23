@@ -1,5 +1,10 @@
 # discord-huddle
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![discord-huddle release](https://img.shields.io/github/v/tag/southglory/system-agents-plugins?filter=discord-huddle-*&label=discord-huddle)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+
 [English](README.md) | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 一个 [system-agents-template](https://github.com/southglory/system-agents-template) 插件，把 Discord 频道变成项目的团队聊天、会议纪要和公告渠道。
@@ -13,10 +18,20 @@
 
 不要直接克隆本仓库。使用模板的安装器：
 
+滚动（始终跟随 `main`）:
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/southglory/system-agents-template/main/install.sh -o install.sh
 bash install.sh
 ```
+
+固定到稳定 Release（推荐以便重现）:
+
+```bash
+curl -sSL https://github.com/southglory/system-agents-template/releases/latest/download/install.sh -o install.sh
+bash install.sh
+```
+
 
 选择插件时挑选 `discord-huddle`。安装器会将文件复制到你的项目中，全局注册斜杠技能，并生成 `.claude/secrets/discord-huddle.env.example`。安装后，填好 secrets 文件（Bot Token + 频道 ID）即可。
 
@@ -114,3 +129,7 @@ MIT — 见仓库根的 [`LICENSE`](../LICENSE)。
 - [SETUP.md](docs/SETUP.md) — 安装与配置
 - [SMOKE_TEST.md](docs/SMOKE_TEST.md) — 手动冒烟测试清单
 - 仓库根 [README](../README.md) — 插件生态概览
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=southglory/system-agents-template,southglory/system-agents-plugins&type=Date)](https://star-history.com/#southglory/system-agents-template&southglory/system-agents-plugins&Date)
