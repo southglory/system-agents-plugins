@@ -82,7 +82,7 @@ stderr은 사람이 읽는 진행 로그. 이 분리 덕분에 후속 공지 단
 
 - **Python ≥ 3.10** (stdlib 전용 — `pip install` 필요 없음)
 - Unity Editor 실행 중 + `unity-cli` 연결됨 (`unity-cli status = ready`)
-- `unity-cli v0.3+` PATH에 있음
+- **[unity-cli](https://github.com/youngwoocho02/unity-cli)** (MIT) PATH에 있음, v0.3+. Windows 설치: `irm https://raw.githubusercontent.com/youngwoocho02/unity-cli/master/install.ps1 | iex`
 - `gh` CLI, `repo` scope 인증
 
 ## 이 플러그인이 하지 않는 것

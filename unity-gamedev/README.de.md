@@ -82,7 +82,7 @@ Exakter Vertrag in [`skills/publish-build/SKILL.md`](skills/publish-build/SKILL.
 
 - **Python ≥ 3.10** (nur stdlib — kein `pip install`)
 - Unity Editor läuft, mit verbundenem `unity-cli` (`unity-cli status = ready`)
-- `unity-cli v0.3+` im `PATH`
+- **[unity-cli](https://github.com/youngwoocho02/unity-cli)** (MIT) im `PATH`, v0.3+. Windows-Installation: `irm https://raw.githubusercontent.com/youngwoocho02/unity-cli/master/install.ps1 | iex`
 - `gh` CLI, mit `repo`-Scope authentifiziert
 
 ## Was dieses Plugin NICHT tut

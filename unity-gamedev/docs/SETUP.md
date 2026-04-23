@@ -7,7 +7,7 @@ Assumes the plugin is already installed into your project (see repo-root README 
 ## 1. External tools
 
 - **Unity Editor** (any version where `unity-cli` exec works; the plugin is target-agnostic as long as the `BuildTarget` name is valid).
-- **unity-cli** on `PATH`. `unity-cli v0.3+`. Verify with `unity-cli --version`.
+- **[unity-cli](https://github.com/youngwoocho02/unity-cli)** (MIT) on `PATH`, v0.3+. Verify with `unity-cli --version`. Windows install one-liner: `irm https://raw.githubusercontent.com/youngwoocho02/unity-cli/master/install.ps1 | iex` (see the upstream repo's README for macOS/Linux).
 - **GitHub CLI** (`gh`), authenticated with `repo` scope. Verify with `gh auth status`.
 
 If `unity-cli` or `gh` is missing, the corresponding step fails with a clear error message.

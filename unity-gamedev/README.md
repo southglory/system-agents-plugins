@@ -82,7 +82,7 @@ Exact contract in [`skills/publish-build/SKILL.md`](skills/publish-build/SKILL.m
 
 - **Python ≥ 3.10** (stdlib only — no `pip install` step)
 - **Unity Editor** running, with `unity-cli` connected (`unity-cli status = ready`)
-- **`unity-cli v0.3+`** on `PATH`
+- **[unity-cli](https://github.com/youngwoocho02/unity-cli)** (MIT) on `PATH`, v0.3+. Windows install: `irm https://raw.githubusercontent.com/youngwoocho02/unity-cli/master/install.ps1 | iex`
 - **`gh` CLI**, authenticated with `repo` scope
 
 ## What this plugin does NOT do
