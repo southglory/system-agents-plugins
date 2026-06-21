@@ -1,0 +1,1 @@
+# autonomous-loop uses the Python standard library only — no third-party deps.

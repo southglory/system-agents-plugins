@@ -29,3 +29,14 @@ plugins:
       - multi-scene-build     # --scene can be repeated
       - skip-build            # reuse pre-built Builds/<name>.<ext>
     status: stable
+
+  - name: autonomous-loop
+    summary: Autonomous loop over TODO.md — self-answers as the user's persona, defers approval-gated risky actions
+    path: autonomous-loop/
+    min_python: "3.10"
+    needs_token: None (persona is built locally from your Claude Code history)
+    extras:
+      - multi-account         # auto-detects cc-switch dirs (~/.claude, ~/.claude-*)
+      - persona-backup        # local-only backup of the hand-tuned PERSONA.md
+    status: preview
+

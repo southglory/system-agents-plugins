@@ -39,6 +39,7 @@ Answer "discord-huddle" (or any other listed plugin) when the installer asks whi
 |---|---|---|
 | [`discord-huddle/`](discord-huddle/) | Team chat + tracked meeting summaries via Discord | ✅ Released (`discord-huddle-v0.1.0`) |
 | [`unity-gamedev/`](unity-gamedev/) | Unity CLI build → GitHub Release publishing | ✅ Released (`unity-gamedev-v0.1.0`) |
+| [`autonomous-loop/`](autonomous-loop/) | Autonomous loop over TODO.md — self-answers as your persona, defers risky actions | 🟡 Preview |
 
 Open a plugin folder to see its own README for detailed setup.
 
