@@ -1,5 +1,10 @@
 # autonomous-loop
 
+
+![tests CI](https://github.com/southglory/system-agents-plugins/actions/workflows/tests.yml/badge.svg)
+![autonomous-loop release](https://img.shields.io/github/v/tag/southglory/system-agents-plugins?filter=autonomous-loop-*&label=autonomous-loop)
+![License](https://img.shields.io/github/license/southglory/system-agents-plugins)
+
 A [system-agents-template](https://github.com/southglory/system-agents-template) plugin that runs an
 **autonomous loop**: it processes `TODO.md` top-down and, when a decision would normally need the user,
 it doesn't stop — it **simulates the user's persona** to answer and keeps going. Approval-gated risky
